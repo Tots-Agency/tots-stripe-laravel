@@ -19,7 +19,8 @@
     "require": {
         "php": "^8.0",
         "laravel/framework": "^10.10|^11.0|^12.0",
-        "tots/core-laravel": "dev-main"
+        "tots/core-laravel": "dev-main",
+        "stripe/stripe-php": "^17.1"
     },
     "repositories": [
         {
