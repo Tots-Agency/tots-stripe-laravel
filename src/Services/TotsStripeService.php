@@ -48,7 +48,7 @@ class TotsStripeService
      * 
      * @return \Stripe\Product
      */
-    public function createProduc($name, $description)
+    public function createProduct($name, $description)
     {
         return $this->stripe->products->create([
             'name' => $name,
