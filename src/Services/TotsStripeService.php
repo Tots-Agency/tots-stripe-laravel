@@ -94,7 +94,7 @@ class TotsStripeService
      * Obtiene todos los medios de pago del cliente guardados
      *
      * @param string $customerId
-     * @return array
+     * @return \Stripe\Collection<\Stripe\PaymentMethod>
      */
     public function getPaymentMethodsSaved($customerId)
     {
