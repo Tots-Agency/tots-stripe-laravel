@@ -101,6 +101,16 @@ class TotsStripeService
         return $this->stripe->paymentMethods->all(['customer' => $customerId, 'type' => 'card']);
     }
     /**
+     * Obtener el medio de pago por ID
+     *
+     * @param string $paymentMethodId
+     * @return \Stripe\PaymentMethod
+     */
+    public function getPaymentMethodById($paymentMethodId)
+    {
+        return $this->stripe->paymentMethods->retrieve($paymentMethodId);
+    }
+    /**
      * Elimina una medio de pago
      *
      * @param string $paymentMethodId
