@@ -36,13 +36,14 @@ class TotsStripeService
      * 
      * @return \Stripe\Checkout\Session
      */
-    public function createPaymentSetupCheckoutSession($customerId, $successUrl)
+    public function createPaymentSetupCheckoutSession($customerId, $successUrl, $cancelUrl = null)
     {
         return $this->stripe->checkout->sessions->create([
             'customer' => $customerId,
             'mode' => 'setup',
             'payment_method_types' => ['card'],
             'success_url' => $successUrl,
+            'cancel_url' => $cancelUrl ?? $successUrl,
         ]);
     }
     /**
