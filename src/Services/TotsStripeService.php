@@ -187,4 +187,20 @@ class TotsStripeService
     {
         return $this->stripe->accountLinks->create($params);
     }
+    /**
+     * Crea un account link para el onboarding de Connect desde una cuenta nueva
+     *
+     * @param null|array{account: string, collect?: string, collection_options?: array{fields?: string, future_requirements?: string}, expand?: string[], refresh_url?: string, return_url?: string, type: string} $params
+     * @return \Stripe\AccountLink
+     */
+    public function createAccountLinkFromNewAccount($params)
+    {
+        $account = $this->createAccount([]);
+        return $this->createAccountLink([
+            'account' => $account->id,
+            'refresh_url' => $params['refresh_url'] ?? '',
+            'return_url' => $params['return_url'] ?? '',
+            'type' => 'account_onboarding',
+        ]);
+    }
 }
