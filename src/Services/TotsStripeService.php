@@ -217,4 +217,16 @@ class TotsStripeService
             'external_account' => $params,
         ]);
     }
+    /**
+     * Obtiene las cuentas bancarias de una cuenta de Stripe Connect
+     *
+     * @param string $accountId
+     * @return \Stripe\Collection<\Stripe\BankAccount>
+     */
+    public function getBankAccountsByAccound($accountId)
+    {
+        return $this->stripe->accounts->allExternalAccounts($accountId, [
+            'object' => 'bank_account',
+        ]);
+    }
 }
