@@ -223,7 +223,7 @@ class TotsStripeService
      * @param string $accountId
      * @return \Stripe\Collection<\Stripe\BankAccount>
      */
-    public function getBankAccountsByAccound($accountId)
+    public function getBankAccountsByAccount($accountId)
     {
         return $this->stripe->accounts->allExternalAccounts($accountId, [
             'object' => 'bank_account',
