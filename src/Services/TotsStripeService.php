@@ -229,4 +229,15 @@ class TotsStripeService
             'object' => 'bank_account',
         ]);
     }
+    /**
+     * Elimina una cuenta bancaria de una cuenta de Stripe Connect
+     *
+     * @param string $accountId
+     * @param string $bankAccountId
+     * @return \Stripe\BankAccount|\Stripe\Card
+     */
+    public function removeBankAccountById($accountId, $bankAccountId)
+    {
+        return $this->stripe->accounts->deleteExternalAccount($accountId, $bankAccountId);
+    }
 }
