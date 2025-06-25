@@ -203,4 +203,18 @@ class TotsStripeService
             'type' => 'account_onboarding',
         ]);
     }
+    /**
+     * Crea una cuenta bancaria en una cuenta de Stripe Connect
+     *
+     * @param string $accountId
+     * @param array|string $params
+     * 
+     * @return \Stripe\BankAccount
+     */
+    public function createBankAccountInAccount($accountId, $params)
+    {
+        return $this->stripe->accounts->createExternalAccount($accountId, [
+            'external_account' => $params,
+        ]);
+    }
 }
