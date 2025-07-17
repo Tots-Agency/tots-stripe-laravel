@@ -82,6 +82,13 @@ class TotsStripeService
         ]);
     }
 
+    public function editProduct($productId, $name)
+    {
+        return $this->stripe->products->update($productId, [
+            'name' => $name,
+        ]);
+    }
+
     /**
      * Crea un precio para un producto
      *
@@ -97,6 +104,14 @@ class TotsStripeService
             'unit_amount' => $amount,
             'currency' => $currency,
             'product' => $productId,
+        ]);
+    }
+
+    public function editPrice($priceId, $amount, $currency)
+    {
+        return $this->stripe->prices->update($priceId, [
+            'unit_amount' => $amount,
+            'currency' => $currency,
         ]);
     }
 
