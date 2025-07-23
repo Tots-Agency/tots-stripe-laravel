@@ -265,4 +265,30 @@ class TotsStripeService
     {
         return $this->stripe->accounts->deleteExternalAccount($accountId, $bankAccountId);
     }
+
+    /**
+     * Realiza un reembolso automático para el comprador
+     *
+     * @param string $paymentIntentId
+     * @param int|null $amount Monto a reembolsar en centavos (opcional, por defecto total)
+     * @param string|null $reason Motivo del reembolso (opcional)
+     * @param string|null $message Mensaje opcional para el comprador
+     * @return \Stripe\Refund
+     */
+    public function refundPaymentIntent($paymentIntentId, $amount = null, $reason = null, $message = null)
+    {
+        $params = [
+            'payment_intent' => $paymentIntentId,
+        ];
+        if ($amount !== null) {
+            $params['amount'] = $amount;
+        }
+        if ($reason !== null) {
+            $params['reason'] = $reason;
+        }
+        if ($message !== null) {
+            $params['metadata'] = ['message' => $message];
+        }
+        return $this->stripe->refunds->create($params);
+    }
 }
