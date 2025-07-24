@@ -291,4 +291,15 @@ class TotsStripeService
         }
         return $this->stripe->refunds->create($params);
     }
+    /**
+     * Obtiene una sesión de Stripe Checkout por su ID
+     *
+     * @param string $sessionId
+     * @return \Stripe\Checkout\Session
+     */
+    public function getSessionById($sessionId)
+    {
+        return $this->stripe->checkout->sessions->retrieve($sessionId);
+    }
+    
 }
