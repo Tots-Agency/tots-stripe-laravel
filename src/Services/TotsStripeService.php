@@ -302,4 +302,15 @@ class TotsStripeService
         return $this->stripe->checkout->sessions->retrieve($sessionId);
     }
     
+    /**
+     * Crea una transferencia a una cuenta de Stripe Connect
+     *
+     * @param null|array{amount: int, currency: string, destination: string, description?: string, metadata?: \Stripe\StripeObject} $params
+     * 
+     * @return \Stripe\Transfer
+     */
+    public function createTransfer($params)
+    {
+        return $this->stripe->transfers->create($params);
+    }
 }
