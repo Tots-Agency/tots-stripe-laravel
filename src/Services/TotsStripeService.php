@@ -313,4 +313,26 @@ class TotsStripeService
     {
         return $this->stripe->transfers->create($params);
     }
+
+    /**
+     * Crea un enlace de autorización para OAuth
+     *
+     * @param null|array{scope: string[], state?: string} $params
+     * @return string
+     */
+    public function createOauthLink($params)
+    {
+        return $this->stripe->oauth->authorizeUrl($params);
+    }
+
+    /**
+     * Crea un token de Stripe
+     *
+     * @param null|array $params
+     * @return \Stripe\Token
+     */
+    public function createToken($params)
+    {
+        return $this->stripe->oauth->token($params);
+    }
 }
