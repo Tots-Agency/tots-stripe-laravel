@@ -202,6 +202,20 @@ class TotsStripeService
     {
         return $this->stripe->accounts->create($params);
     }
+
+    /**
+     * Actualiza una cuenta de Stripe Connect
+     *
+     * @param string $accountId
+     * @param array $params
+     * 
+     * @return \Stripe\Account
+     */
+    public function getAccount($accountId)
+    {
+        return $this->stripe->accounts->retrieve($accountId);
+    }
+
     /**
      * Crear un account link para el onboarding de Connect
      *
