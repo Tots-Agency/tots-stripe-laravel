@@ -47,6 +47,17 @@ class TotsStripeService
         ]);
     }
     /**
+     * Crea un payment intent
+     *
+     * @param null|array{amount?: int, application_fee_amount?: int, automatic_payment_methods?: array{enabled: bool}, capture_method?: string, confirmation_method?: string, currency?: string, description?: string, metadata?: \Stripe\StripeObject, on_behalf_of?: string, payment_method?: string, payment_method_data?: array{billing_details?: array{name?: string, email?: string, phone?: string}, type: string}, receipt_email?: string, setup_future_usage?: string, shipping?: array{address: array{city?: string, country: string, line1: string, line2?: null|string, postal_code: string, state: null|string}, carrier?: null|string, name: string, phone?: null|string}, statement_descriptor?: string, statement_descriptor_suffix?: null|string, transfer_data?: array{amount: int, destination: string}, transfer_group?: string} $params
+     * 
+     * @return \Stripe\PaymentIntent
+     */
+    public function createPaymentIntent($params)
+    {
+        return $this->stripe->paymentIntents->create($params);
+    }
+    /**
      * Obtiene un payment intent por ID
      *
      * @param string $paymentIntentId
