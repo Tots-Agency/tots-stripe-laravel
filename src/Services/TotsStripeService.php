@@ -117,6 +117,26 @@ class TotsStripeService
             'product' => $productId,
         ]);
     }
+    /**
+     * Crea un precio recurrente para un producto
+     * 
+     * @param string $productId
+     * @param int $amount
+     * @param string $currency
+     * @param string $interval
+     * @return \Stripe\Price
+     */
+    public function createPriceRecurring($productId, $amount, $currency, $interval)
+    {
+        return $this->stripe->prices->create([
+            'unit_amount' => $amount,
+            'currency' => $currency,
+            'product' => $productId,
+            'recurring' => [
+                'interval' => $interval,
+            ],
+        ]);
+    }
 
     public function editPrice($priceId, $amount, $currency)
     {
