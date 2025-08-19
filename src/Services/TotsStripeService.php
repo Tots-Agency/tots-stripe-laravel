@@ -197,12 +197,12 @@ class TotsStripeService
      * @param string $sigHeader the contents of the signature header sent by Stripe
      * @param string $secret secret used to generate the signature
      * 
-     * @return \Stripe\V2\Event
+     * @return \Stripe\Event
      */
     public function parseThinEvent($payload, $sigHeader, $secret)
     {
         $thinEvent = $this->stripe->parseThinEvent($payload, $sigHeader, $secret);
-        return $this->stripe->v2->core->events->retrieve($thinEvent->id);
+        return $this->stripe->events->retrieve($thinEvent->id);
     }
 
     /**
