@@ -181,7 +181,7 @@ class TotsStripeService
      *
      * @param array $events
      * @param string $url
-     * @return void
+     * @return \Stripe\WebhookEndpoint
      */
     public function createWebhook($events, $url)
     {
@@ -190,6 +190,21 @@ class TotsStripeService
             'enabled_events' => $events,
         ]);
     }
+    /**
+     * Procesa un evento de Stripe webhook
+     * 
+     * @param string $payload the payload sent by Stripe
+     * @param string $sigHeader the contents of the signature header sent by Stripe
+     * @param string $secret secret used to generate the signature
+     * 
+     * @return \Stripe\V2\Event
+     */
+    public function parseThinEvent($payload, $sigHeader, $secret)
+    {
+        $thinEvent = $this->stripe->parseThinEvent($payload, $sigHeader, $secret);
+        return $this->stripe->v2->core->events->retrieve($thinEvent->id);
+    }
+
     /**
      * Obtiene el customer desde Stripe
      * 
