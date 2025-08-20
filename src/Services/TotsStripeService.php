@@ -405,4 +405,14 @@ class TotsStripeService
     {
         return $this->stripe->invoices->retrieve($invoiceId);
     }
+    /**
+     * Obtiene una suscripción de Stripe por su ID
+     *
+     * @param string $subscriptionId
+     * @return \Stripe\Subscription
+     */
+    public function getSubscriptionById($subscriptionId)
+    {
+        return $this->stripe->subscriptions->retrieve($subscriptionId);
+    }
 }
