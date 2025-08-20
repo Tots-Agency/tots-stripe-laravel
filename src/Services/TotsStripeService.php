@@ -395,4 +395,14 @@ class TotsStripeService
     {
         return $this->stripe->oauth->token($params);
     }
+    /**
+     * Obtiene una factura de Stripe por su ID
+     *
+     * @param string $invoiceId
+     * @return \Stripe\Invoice
+     */
+    public function getInvoiceById($invoiceId)
+    {
+        return $this->stripe->invoices->retrieve($invoiceId);
+    }
 }
