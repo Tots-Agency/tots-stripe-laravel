@@ -415,4 +415,15 @@ class TotsStripeService
     {
         return $this->stripe->subscriptions->retrieve($subscriptionId);
     }
+    /**
+     * Crea una sesión del portal de facturación
+     *
+     * @param null|array{customer: string, configuration?: string, expand?: string[], return_url?: string} $params
+     * 
+     * @return \Stripe\BillingPortal\Session
+     */
+    public function createBillingPortalSession($params)
+    {
+        return $this->stripe->billingPortal->sessions->create($params);
+    }
 }
