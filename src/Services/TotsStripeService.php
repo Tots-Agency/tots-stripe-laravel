@@ -426,4 +426,15 @@ class TotsStripeService
     {
         return $this->stripe->billingPortal->sessions->create($params);
     }
+    /**
+     * Obtiene todos los pagos de una factura
+     *
+     * @param string $invoiceId
+     */
+    public function getAllInvoicePayments($invoiceId)
+    {
+        return $this->stripe->invoicePayments->all([
+            'invoice' => $invoiceId
+        ]);
+    }
 }
