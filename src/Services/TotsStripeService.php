@@ -430,6 +430,8 @@ class TotsStripeService
      * Obtiene todos los pagos de una factura
      *
      * @param string $invoiceId
+     *
+     * @return \Stripe\Collection<\Stripe\InvoicePayment>
      */
     public function getAllInvoicePayments($invoiceId)
     {
