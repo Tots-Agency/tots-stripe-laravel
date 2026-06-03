@@ -1,7 +1,7 @@
 {
     "name": "tots/stripe-laravel",
     "description": "The library for Laravel PHP",
-    "version": "11.0.2",
+    "version": "11.0.3",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -16,6 +16,11 @@
         }
     ],
     "minimum-stability": "stable",
+    "config": {
+        "audit": {
+            "block-insecure": false
+        }
+    },
     "require": {
         "php": "^8.0",
         "laravel/framework": "^10.10|^11.0|^12.0",
